@@ -1,0 +1,106 @@
+<head>
+    <script src="plan.json"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+</head>
+
+<body>
+    <div id="top">
+        <div class="box"> <img src="img/rogo.webp" height="100%"></div>
+        <div class="box"> <img src="img/rogobig.png" height=" 100%"></div>
+        <div class="box">
+            <h1>
+                <big1>各</big1>作者の投稿予定のご案内
+            </h1>
+        </div>
+    </div>
+    <div class="center">
+        <div id="line-t">
+            <h1>03/30 18:00</h1>
+        </div>
+        <div id="line-b">
+            <h1>投稿期間開始</h1>
+        </div>
+    </div>
+    <div class="under">
+
+    </div>
+</body>
+
+<style>
+    body {
+        width: 1920px;
+        height: 1080px;
+        margin: 5px;
+        border: 1px solid #d1d1d1;
+        border-radius: 40px;
+        background-color: #313131;
+    }
+
+    #top {
+        height: 100px;
+        width: 1800px;
+        margin: 20px;
+        display: flex;
+    }
+
+    #top h1 {
+        height: 100px;
+        margin: 10px auto auto auto;
+        color: #fff;
+    }
+
+    big1 {
+        font-size: 3.4rem;
+    }
+
+    .box {
+        display: inline-block;
+        height: 100px;
+        margin: 0;
+    }
+
+    .center {
+        margin: 0 0px 0 20px;
+        width: 1500px;
+        height: 150px;
+    }
+
+    .center h1 {
+        color: #fff;
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+        margin: 0;
+        padding: 7px 0px 0 15px;
+    }
+
+    #line-t {
+        border: 4px solid #d1d1d1;
+        border-top: 0px;
+        height: 50px;
+    }
+
+    #line-b {
+        border-right: 4px solid #d1d1d1;
+        border-left: 4px solid #d1d1d1;
+        height: 50px;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+
+        $.getJSON("../plan.json", (plan) => {
+            var plan = Object.keys(plan).length;
+            h =
+                $(".center").append(h);
+            console.log(h);
+
+            html2canvas(document.querySelector("#canvas-box")).then(canvas => {
+                let downloadEle = document.createElement("a");
+                donwloadEle.href = canvas.toDataURL("image/png");
+                donloadEle.download = "canvas.png";
+                downloadEle.click();
+            });
+        });
+    });
+</script>
