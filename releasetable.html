@@ -1,6 +1,28 @@
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <title>PVSF各作者の投稿予定表</title>
+    <link rel="shortcut icon" href="img/web.ico" type="image/vnd.microsoft.icon">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="各作者の投稿予定表 PVSF">
+    <meta property="og:description" content="PVSFの各作者の投稿予定表です。ぜひクリエイターたちが頑張った作品たちをご覧ください。">
+    <meta property="og:site_name" content="">
+    <meta property="og:image" content="" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@pvsf">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="plan.json"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <link href="releasetable.css" rel="stylesheet" type="text/css">
+    <meta name="google-site-verification" content="kQeOdyUSC-Mx7OnAqeHUMkZXOOw52MdQ-qi9yMQSucM" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Open+Sans:wght@700&display=swap"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="jquery.simplePagination.js"></script>
 
 </head>
 
@@ -8,6 +30,7 @@
     <div id="top">
         <div class="box"> <img src="img/rogo.webp" height="100%"></div>
         <div class="box"> <img src="img/rogobig.png" height=" 100%"></div>
+
         <div class="box">
             <h1>
                 <big1>各</big1>作者の投稿予定のご案内
@@ -16,91 +39,114 @@
     </div>
     <div class="center">
         <div id="line-t">
-            <h1>03/30 18:00</h1>
+            <h1>03/30 18:00<a>投稿期間終了</a></h1>
         </div>
         <div id="line-b">
-            <h1>投稿期間開始</h1>
+            <h1>投稿期間開始<a>04/02</a></h1>
         </div>
+
     </div>
     <div class="under">
-
     </div>
+
 </body>
-
-<style>
-    body {
-        width: 1920px;
-        height: 1080px;
-        margin: 5px;
-        border: 1px solid #d1d1d1;
-        border-radius: 40px;
-        background-color: #313131;
-    }
-
-    #top {
-        height: 100px;
-        width: 1800px;
-        margin: 20px;
-        display: flex;
-    }
-
-    #top h1 {
-        height: 100px;
-        margin: 10px auto auto auto;
-        color: #fff;
-    }
-
-    big1 {
-        font-size: 3.4rem;
-    }
-
-    .box {
-        display: inline-block;
-        height: 100px;
-        margin: 0;
-    }
-
-    .center {
-        margin: 0 0px 0 20px;
-        width: 1500px;
-        height: 150px;
-    }
-
-    .center h1 {
-        color: #fff;
-        font-size: 1.5rem;
-        letter-spacing: 5px;
-        margin: 0;
-        padding: 7px 0px 0 15px;
-    }
-
-    #line-t {
-        border: 4px solid #d1d1d1;
-        border-top: 0px;
-        height: 50px;
-    }
-
-    #line-b {
-        border-right: 4px solid #d1d1d1;
-        border-left: 4px solid #d1d1d1;
-        height: 50px;
-    }
-</style>
-<script type="text/javascript">
+<script type="text/javascript" charset="utf-8">
     $(function () {
-
         $.getJSON("../plan.json", (plan) => {
-            var plan = Object.keys(plan).length;
-            h =
-                $(".center").append(h);
-            console.log(h);
+            var tate = 8;
+            var yoko = 6;
 
+            var cssh = '<style>.works{width:'
+                + (1500 / yoko)
+                + 'px; margin-right:8px;}.work{width:'
+                + (1500 / yoko - 10)
+                + 'px; height:'
+                + (790 / tate - 5)
+                + 'px; font-size:'
+                + (123 / tate)
+                + 'px;}</style>';
+            $("head").append(cssh);
+            console.log(cssh);
+
+            var planlong = Object.keys(plan).length;
+            var h = '';
+            for (let step = 0; step < planlong / tate; step++) {
+                console.log('step' + step);
+                console.log('planlong' + planlong);
+                var h = '<div class="works">';
+                for (let i = (step * tate) + 0; i < ((step + 1) * tate) && i < planlong; i++) {
+                    console.log('i' + i);
+                    // spanを生成.
+                    var span = document.createElement('span');
+
+                    // 現在の表示要素に影響しないように、画面外に飛ばしておく.
+                    span.style.position = 'absolute';
+                    span.style.top = '-1000px';
+                    span.style.left = '-1000px';
+
+                    // 折り返しはさせない.
+                    span.style.whiteSpace = 'nowrap';
+
+                    // 計測したい文字を設定する.
+                    span.innerHTML = plan[i].title;
+
+                    // 必要に応じてスタイルを適用する.
+                    span.style.fontSize = '190%';
+                    span.style.letterSpacing = '0px';
+
+                    // DOMに追加する（追加することで、ブラウザで領域が計算されます）
+                    document.body.appendChild(span);
+
+                    // 横幅を取得します.
+                    var width = span.clientWidth;
+                    console.log('width:', width)
+
+                    // 終わったらDOMから削除します.
+                    span.parentElement.removeChild(span);
+                    var h = h
+                        + '<div class="work"><center><p1>'
+
+                        + plan[i].creator
+                        + '</p1><p2>さん</p2><br>';
+                    if (width < (1500 / yoko)) {
+                        var h = h
+                            + '<p3>'
+                            + plan[i].title
+                            + '</p3><br><p4>';
+                    } else {
+                        var h = h
+                            + '<p3mini>'
+                            + plan[i].title
+                            + '</p3mini><br><p4>';
+                    }
+
+                    var h = h
+                        + plan[i].date
+                        + '  '
+                        + plan[i].time
+                        + '  '
+                        + plan[i].release
+                        + '</p4></center></div> ';
+                }
+
+                h = h + '</div>';
+                $(".under").append(h);
+                console.log(h);
+            }
+
+
+        });
+        var btn = document.getElementById("download-btn");
+        btn.addEventListener("click", () => {
             html2canvas(document.querySelector("#canvas-box")).then(canvas => {
                 let downloadEle = document.createElement("a");
-                donwloadEle.href = canvas.toDataURL("image/png");
-                donloadEle.download = "canvas.png";
+                downloadEle.href = canvas.toDataURL("image/png");
+                downloadEle.download = "canvas.png";
                 downloadEle.click();
             });
-        });
+        })
     });
 </script>
+<style>
+
+</style>

@@ -1,0 +1,102 @@
+body {
+  width: 1911px;
+  height: 1068px;
+  margin: 5px;
+  border: 1px solid #d1d1d1;
+  border-radius: 0px;
+  background-color: #313131;
+  border-radius: 10px;
+}
+
+#top {
+  height: 100px;
+  width: 1800px;
+  margin: 20px;
+  display: flex;
+}
+
+#top h1 {
+  height: 100px;
+  margin: 10px auto auto auto;
+  color: #fff;
+}
+
+big1 {
+  font-size: 3.4rem;
+}
+
+.box {
+  display: inline-block;
+  height: 100px;
+  margin: 0;
+}
+
+.center {
+  margin: 0 0px 0 20px;
+  width: 1500px;
+  height: 110px;
+}
+
+.center h1 {
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  margin: 0;
+  padding: 7px 0px 0 15px;
+}
+
+#line-t {
+  border: 4px solid #d1d1d1;
+  border-top: 0px;
+  height: 50px;
+}
+
+#line-b {
+  border-right: 4px solid #d1d1d1;
+  border-left: 4px solid #d1d1d1;
+  height: 50px;
+}
+.under {
+  width: 1500px;
+  height: 810px;
+  margin: 0 0px 0 20px;
+  display: flex;
+}
+.works {
+}
+.work {
+  margin-bottom: 5px;
+  border: 1px solid #ffffff;
+  background-color: #313131;
+  display: inline-block;
+  border-radius: 0px;
+  color: #fff;
+  border-radius: 10px;
+
+  white-space: nowrap;
+}
+
+p1 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 150%;
+  line-height: 1.5em;
+  position: relative;
+}
+p2 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 70%;
+  line-height: 1em;
+}
+p3 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 170%;
+  line-height: 1.22em;
+}
+p3mini {
+  white-space: normal;
+}
+p4 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 80%;
+  line-height: 3em;
+}
