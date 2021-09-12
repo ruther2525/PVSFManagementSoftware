@@ -82,6 +82,11 @@ p1 {
   line-height: 1.5em;
   position: relative;
 }
+p1mini {
+  font-size: 100%;
+  line-height: 2.25em;
+  white-space: normal;
+}
 p2 {
   font-family: "Noto Sans JP", sans-serif;
   font-size: 70%;
@@ -94,6 +99,12 @@ p3 {
 }
 p3mini {
   white-space: normal;
+  font-size: 100%;
+}
+p3minibr {
+  white-space: normal;
+  font-size: 60%;
+  line-height: 1em;
 }
 p4 {
   font-family: "Noto Sans JP", sans-serif;

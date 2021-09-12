@@ -76,50 +76,67 @@
                 var h = '<div class="works">';
                 for (let i = (step * tate) + 0; i < ((step + 1) * tate) && i < planlong; i++) {
                     console.log('i' + i);
-                    // spanを生成.
-                    var span = document.createElement('span');
 
-                    // 現在の表示要素に影響しないように、画面外に飛ばしておく.
+                    var span = document.createElement('span');
                     span.style.position = 'absolute';
                     span.style.top = '-1000px';
                     span.style.left = '-1000px';
-
-                    // 折り返しはさせない.
                     span.style.whiteSpace = 'nowrap';
-
-                    // 計測したい文字を設定する.
                     span.innerHTML = plan[i].title;
-
-                    // 必要に応じてスタイルを適用する.
                     span.style.fontSize = '190%';
                     span.style.letterSpacing = '0px';
-
-                    // DOMに追加する（追加することで、ブラウザで領域が計算されます）
                     document.body.appendChild(span);
-
-                    // 横幅を取得します.
                     var width = span.clientWidth;
-                    console.log('width:', width)
-
-                    // 終わったらDOMから削除します.
                     span.parentElement.removeChild(span);
-                    var h = h
-                        + '<div class="work"><center><p1>'
 
-                        + plan[i].creator
-                        + '</p1><p2>さん</p2><br>';
+                    var span = document.createElement('span');
+                    span.style.position = 'absolute';
+                    span.style.top = '-1000px';
+                    span.style.left = '-1000px';
+                    span.style.whiteSpace = 'nowrap';
+                    span.innerHTML = plan[i].creator;
+                    span.style.fontSize = '140%';
+                    span.style.letterSpacing = '0px';
+                    document.body.appendChild(span);
+                    var width1 = span.clientWidth;
+                    span.parentElement.removeChild(span);
+                    console.log(width);
+                    var h = h
+                        + '<div class="work"><center>';
+                    if (width1 < (1500 / yoko)) {
+                        h = h
+                            + '<p1>' + plan[i].creator + '</p1>';
+                    } else {
+
+                        h = h + '<p1mini>' + plan[i].creator + '</p1mini>';
+
+                    }
+                    h = h
+
+                        + '<p2>さん</p2><br>';
                     if (width < (1500 / yoko)) {
                         var h = h
                             + '<p3>'
                             + plan[i].title
                             + '</p3><br><p4>';
                     } else {
-                        var h = h
-                            + '<p3mini>'
-                            + plan[i].title
-                            + '</p3mini><br><p4>';
-                    }
+                        if (plan[i].title.match(/（/ || / / || / / || /""/ || /)/)) {
+                            var shorttitle1 = plan[i].title;
+                            var result = shorttitle1.replace('（' || '(' || '"' || '""', '<br><p3minibr>(');
+                            console.log(result);
 
+                            var h = h +
+                                '<p3mini>'
+                                + result
+                                + '</p3minibr></p3mini><br><p4>';
+
+                        } else {
+                            var h = h
+                                + '<p3mini>'
+                                + plan[i].title
+                                + '</p3mini><br><p4>';
+                        }
+                    }
                     var h = h
                         + plan[i].date
                         + '  '
